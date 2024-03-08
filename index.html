@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Testest vueJS APPS</title>
+    <meta charset="utf-8">
+    <script src="libs/vue.js"></script>
+    <script src="libs/jquery.js"></script>
+    <script src="libs/jquery.mask.js"></script>
+  </head>
+  <body>
+    <div id="app-count">
+      <fieldset>
+        <legend>Contador</legend>
+        <p>Contador: {{ count }}</p>
+        <button @click="count++" >Conta</button>
+      </fieldset>
+    </div>
+<div id="app-mask">
+  <fieldset>
+    <legend>{{titulo}}</legend>
+    <input style="width: 500px; height: 60px;margin: 30px;" class="maskprdec" v-model="inputModel"  >
+   
+   {{inputModel}}
+    </fieldset>
+</div>
+<script>
+
+  //app-count######################
+ const { createApp } = Vue;
+var appCount;
+appCount=createApp({
+  data() {
+    return {
+      count: 0
+    }
+  }
+});
+var respappCount=appCount.mount('#app-count')
+//app-count######################
+//app-mask######################
+createApp({
+  data() {
+    return {
+      titulo: 'Utilizando Mascaras',
+      inputModel:'',
+      date:''
+
+    }
+  },
+  mounted() {
+    $(".maskprdec").mask("#.##0.000", {reverse: true});
+  }
+}).mount('#app-mask');
+
+
+//app-mask######################
+</script>
+</body>
+</html>
